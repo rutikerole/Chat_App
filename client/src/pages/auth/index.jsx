@@ -64,7 +64,7 @@ function Auth() {
         console.log("Login successful:", response.data);
       }
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Login failed:", error.response ? error.response.data : error.message);
     }
   };
 
