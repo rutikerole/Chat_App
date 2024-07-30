@@ -6,12 +6,12 @@ export const SIGNUP_ROUTE = `${AUTH_ROUTES}/signup`;
 export const LOGIN_ROUTE = `${AUTH_ROUTES}/login`;
 
 export const GET_USERINFO_ROUTE = `${AUTH_ROUTES}/userinfo`;
-/*
 export const LOGOUT_ROUTE = `${AUTH_ROUTES}/logout`;
 export const UPDATE_PROFLE_ROUTE = `${AUTH_ROUTES}/update-profile`;
 export const ADD_PROFILE_IMAGE_ROUTE = `${AUTH_ROUTES}/add-profile-image`;
 export const REMOVE_PROFILE_IMAGE_ROUTE = `${AUTH_ROUTES}/remove-profile-image`;
 
+/*
 export const MESSAGES_ROUTES = "/api/messages";
 export const FETCH_ALL_MESSAGES_ROUTE = `${MESSAGES_ROUTES}/get-messages`;
 export const UPLOAD_FILE = `${MESSAGES_ROUTES}/upload-file`;

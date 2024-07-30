@@ -107,16 +107,7 @@ export const getUserInfo = async (request, response, next) => {
   }
 };
 
-/*
-/// LOGOUT
-export const logout = async (request, response, next) => {
-  try {
-    response.cookie("jwt", "", { maxAge: 1, secure: true, sameSite: "None" });
-    return response.status(200).send("Logout successful");
-  } catch (err) {
-    return response.status(500).send("Internal Server Error");
-  }
-};
+
 
 
 
@@ -127,9 +118,7 @@ export const updateProfile = async (request, response, next) => {
 
     const { firstName, lastName, color } = request.body;
 
-    if (!userId) {
-      return response.status(400).send("User ID is required.");
-    }
+    if (!userId) { return response.status(400).send("User ID is required.")}
 
     if (!firstName || !lastName) {
       return response.status(400).send("Firstname and Last name is required.");
@@ -161,6 +150,21 @@ export const updateProfile = async (request, response, next) => {
     return response.status(500).send("Internal Server Error.");
   }
 };
+
+
+/*
+
+/// LOGOUT
+export const logout = async (request, response, next) => {
+  try {
+    response.cookie("jwt", "", { maxAge: 1, secure: true, sameSite: "None" });
+    return response.status(200).send("Logout successful");
+  } catch (err) {
+    return response.status(500).send("Internal Server Error");
+  }
+};
+
+
 
 export const addProfileImage = async (request, response, next) => {
   try {
