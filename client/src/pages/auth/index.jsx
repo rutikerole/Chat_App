@@ -8,9 +8,12 @@ import { Input } from "@/components/ui/input";
 import Background from "@/assets/login2.png";
 import Victory from "@/assets/victory.svg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
+import { useAppStore } from "@/store";
 
 function Auth() {
   const navigate = useNavigate();
+
+  const { setUserInfo } = useAppStore()
 
   // Separate state variables for login
   const [loginEmail, setLoginEmail] = useState("");
@@ -52,12 +55,10 @@ function Auth() {
   const handleLogin = async () => {
     try {
       if (validateLogin()) {
-        const response = await apiClient.post(
-          LOGIN_ROUTE,
-          { email: loginEmail, password: loginPassword },
-          { withCredentials: true }
-        );
+        const response = await apiClient.post(LOGIN_ROUTE,{ email: loginEmail, password: loginPassword },{ withCredentials: true });
+
         if (response.data.user.id) {
+          setUserInfo(response.data.user)
           if (response.data.user.profileSetup) navigate("/chat");
           else navigate("/profile");
         }
@@ -71,12 +72,12 @@ function Auth() {
   const handleSignup = async () => {
     try {
       if (validateSignup()) {
-        const response = await apiClient.post(
-          SIGNUP_ROUTE,
-          { email: signupEmail, password: signupPassword },
-          { withCredentials: true }
-        );
-        if (response.status === 201) navigate("/profile");
+        const response = await apiClient.post(SIGNUP_ROUTE,{ email: signupEmail, password: signupPassword },{ withCredentials: true });
+        
+        if (response.status === 201){
+          setUserInfo(response.data.user)
+          navigate("/profile");
+        }
         console.log("Signup successful:", response.data);
       }
     } catch (error) {

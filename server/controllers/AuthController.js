@@ -80,7 +80,7 @@ export const login = async (request, response, next) => {
     return response.status(500).send("Internal Server Error");
   }
 };
-/*
+
 export const getUserInfo = async (request, response, next) => {
   try {
     if (request.userId) {
@@ -107,7 +107,7 @@ export const getUserInfo = async (request, response, next) => {
   }
 };
 
-
+/*
 /// LOGOUT
 export const logout = async (request, response, next) => {
   try {
