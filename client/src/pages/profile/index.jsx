@@ -70,6 +70,7 @@ function Profile() {
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
+    console.log("Image : ", file)
     if (file) {
       const formData = new FormData();
       formData.append("profile-image", file);
@@ -78,7 +79,7 @@ function Profile() {
       });
       if (response.status === 200 && response.data.image) {
         setUserInfo({ ...userInfo, image: response.data.image });
-        toast.success("Image updated successfully.");
+        toast.success(" Bhau Your Image is updated successfully.");
       }
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -95,7 +96,7 @@ function Profile() {
       });
       if (response.status === 200) {
         setUserInfo({ ...userInfo, image: null });
-        toast.success("Image Removed Successfully.");
+        toast.success("Bhau Your Image is Removed Successfully.");
         setImage(undefined);
       }
     } catch (error) {
@@ -111,7 +112,7 @@ function Profile() {
     if (userInfo.profileSetup) {
       navigate("/chat");
     } else {
-      toast.error("Please setup profile.");
+      toast.error(" Bhau Please setup profile.");
     }
   };
 
