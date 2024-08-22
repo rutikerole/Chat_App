@@ -5,7 +5,7 @@ import { apiClient } from "@/lib/api-client";
 import { LOGIN_ROUTE, SIGNUP_ROUTE } from "@/utils/constants";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Background from "@/assets/login2.png";
+import Background from "@/assets/draken.png";
 import Victory from "@/assets/victory.svg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { useAppStore } from "@/store";
@@ -65,8 +65,17 @@ function Auth() {
         console.log("Login successful:", response.data);
       }
     } catch (error) {
-      console.error("Login failed:", error.response ? error.response.data : error.message);
-    }
+      // Handle different types of errors
+      if (error.response) {
+        // Server responded with a status other than 2xx
+        console.error("Login failed:", error.response.data);
+      } else if (error.request) {
+        // Request was made but no response was received
+        console.error("Login failed: No response received from server");
+      } else {
+        // Something happened in setting up the request
+        console.error("Login failed:", error.message);
+      }}
   };
 
   const handleSignup = async () => {

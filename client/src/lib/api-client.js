@@ -1,27 +1,19 @@
-import { HOST } from "@/utils/constants";
-import axios from "axios";
-//import Cookies from "js-cookie";
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { HOST } from '@/utils/constants';
 
 export const apiClient = axios.create({
   baseURL: HOST,
-});
-/*
-apiClient.interceptors.request.use(
-  (config) => {
-    const token = Cookies.get("access-token");
-
-    if (
-      token &&
-      !config.url.includes("/login") &&
-      !config.url.includes("/signup")
-    ) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
+  headers: {
+    'Content-Type': 'application/json',
   },
-  (error) => {
-    return Promise.reject(error);
+  withCredentials: true,
+});
+
+apiClient.interceptors.request.use((config) => {
+  const token = Cookies.get('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-);*/
-
-
+  return config;
+});
