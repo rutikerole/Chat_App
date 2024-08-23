@@ -144,7 +144,7 @@ const MessageBar = () => {
           >
             <RiEmojiStickerLine className="text-2xl " />
           </button>
-          <div className="absolute bottom-16 right-0" ref={emojiRef}>
+          <div className="absolute bottom-16 right-0 emoji-picker-container"  ref={emojiRef}>
             <EmojiPicker
               theme="dark"
               open={emojiPickerOpen}

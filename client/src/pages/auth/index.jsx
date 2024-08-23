@@ -65,15 +65,11 @@ function Auth() {
         console.log("Login successful:", response.data);
       }
     } catch (error) {
-      // Handle different types of errors
       if (error.response) {
-        // Server responded with a status other than 2xx
         console.error("Login failed:", error.response.data);
       } else if (error.request) {
-        // Request was made but no response was received
         console.error("Login failed: No response received from server");
       } else {
-        // Something happened in setting up the request
         console.error("Login failed:", error.message);
       }}
   };
@@ -95,8 +91,8 @@ function Auth() {
   };
 
   return (
-    <div className="flex items-center justify-center mt-8">
-      <div className="h-[80vh] bg-white border-2 border-white text-opacity-90 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[60vw] rounded-3xl grid xl:grid-cols-2">
+    <div className="flex items-center justify-center min-h-screen cursor-pointer m-auto xl:ml-52">
+      <div className="h-[80vh]  bg-white border-2 border-white text-opacity-90 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[60vw] rounded-3xl grid xl:grid-cols-2">
         <div className="flex flex-col gap-10 items-center justify-center">
           <div className="flex items-center justify-center flex-col">
             <div className="flex items-center justify-center">
@@ -173,7 +169,7 @@ function Auth() {
             </Tabs>
           </div>
         </div>
-        <div className="hidden xl:flex justify-center items-center">
+        <div className="cursor-pointer hidden xl:flex justify-center items-center ">
           <img src={Background} className="h-[600px]" alt="Background" />
         </div>
       </div>
